@@ -14,9 +14,39 @@ code {
 }
 
 h1 {
-  color: #3c3c3c
+  color: #3c3c3c;
+  font-size: 400%;
 }
 
 h2 {
-  color: #ffa500
+  color: #ffa500;
+  font-size: 200%;
+}
+
+.task-card {
+  background-color: whitesmoke; /*do whitesmoke color when task is completed*/
+  border-radius: 1em;
+  padding: 3%;
+  text-align: center;
+  min-width: min-content;
+  max-width: 100%;
+  margin: 5%;
+}
+
+.task-title {
+  text-align: left;
+}
+
+.del-btn {
+  font: inherit;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(219, 35, 35);
+  border-radius: 0.5em;
+  padding: 1%;
+  border: 1px solid rgb(219, 35, 35);
+}
+
+.actions {
+  text-align: right; /*align the del button to the right*/
 }

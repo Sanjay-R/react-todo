@@ -1,13 +1,12 @@
+import Task from './components/Task';
+
 function App() {
   return (
     <div>
-      <h1>Tasks</h1>
-      <div>
-        <h2>Todo-title</h2>
-        <div>
-          <button>Delete</button>
-        </div>
-      </div>
+      <h1>All Tasks</h1>
+      <Task />
+      <Task />
+      <Task />
     </div>
   );
 }
