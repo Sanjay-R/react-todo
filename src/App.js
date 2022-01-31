@@ -1,12 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Hello World!</p>
-      </header>
+    <div>
+      <h1>Tasks</h1>
+      <div>
+        <h2>Todo-title</h2>
+        <div>
+          <button>Delete</button>
+        </div>
+      </div>
     </div>
   );
 }
