@@ -25,7 +25,7 @@ function Task(props) {
             </div>
             {overlayOpen ? <Overlay onCancel={closeOverlayState} onConfirm={closeOverlayState} /> : null}
             {overlayOpen ? <Backdrop onCancel={closeOverlayState} /> : null}
-            {/* my component (custom) so I can name it 'onClick' or whatever I want */}
+            {/* my component (custom) so I can name it 'onClick', 'onCancel' or whatever I want */}
         </div >
     );
 }

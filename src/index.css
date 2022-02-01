@@ -1,5 +1,5 @@
 body {
-  margin: 5%;
+  margin: 5% 20%;
   text-align: center;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -15,12 +15,12 @@ code {
 
 h1 {
   color: #3c3c3c;
-  font-size: 400%;
+  font-size: 4rem;
 }
 
 h2 {
   color: #ffa500;
-  font-size: 200%;
+  font-size: 2rem;
 }
 
 .task-card {
@@ -48,6 +48,12 @@ h2 {
   margin: 0 1em;
 }
 
+.btn:hover {
+  font-weight: bold;
+  color: white;
+  background-color: darkgrey;
+}
+
 .red-btn {
   /* font: inherit; */
   color: white;
@@ -58,11 +64,15 @@ h2 {
   border: 1px solid black;
 }
 
+.red-btn:hover {
+  color: rgb(219, 35, 35);
+  background-color: white;
+}
+
 .actions {
   text-align: right; /*align the del button to the right*/
 }
 
-/* aka modal */
 .overlay {
   font: inherit;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
@@ -86,3 +96,5 @@ h2 {
   top: 0;
   left: 0;
 }
+
+/* https://github.com/academind/react-complete-guide-code/blob/zz-reactjs-summary/extra-files/index.css */
