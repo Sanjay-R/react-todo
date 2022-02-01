@@ -7,7 +7,7 @@ function Task(props) {
         < div className="task-card">
             <h2 className="task-title">{props.title}</h2>
             <div className="actions">
-                <button className="del-btn" onClick={deleteHandler}>Delete</button>
+                <button className="red-btn btn" onClick={deleteHandler}>Delete</button>
             </div>
         </div >
     );

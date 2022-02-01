@@ -1,3 +1,5 @@
+import Overlay from './components/Overlay';
+import Backdrop from './components/Backdrop';
 import Task from './components/Task';
 
 function App() {
@@ -7,6 +9,8 @@ function App() {
       <Task title="first one"/>
       <Task title="task 2"/>
       <Task title="third"/>
+      <Overlay/>
+      <Backdrop/>
     </div>
   );
 }
