@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import raw from '../data/placeholder.txt';
 import Task from './Task';
 
-function TaskList() {
+function TaskList(props) {
+
+    function randomId(low = 1, high = 1000000) {
+        return Math.floor((Math.random() * high) + low);
+    }
 
     const [data, setData] = useState([]);
 
@@ -23,15 +27,19 @@ function TaskList() {
     }, []); //that array u pass is all the states u wanna listen to
     //useEffect will be called each time one of those states changes
 
-    // data.forEach((d) => {
-    //     console.log(d.split(", "));
-    // });
-
     const listItems = data.map((x) => {
-        const rando = Math.floor((Math.random() * 1000000) + 1); //random number between 1 and a millie
+        const rando = randomId(); //random number between 1 and a millie
         const item = x.split(", ");
-        return <Task key={rando} title={item[0]} task={item[1]} id={item[2]}/>
+        return <Task key={rando} title={item[0]} task={item[1]} id={item[2]} />
     });
+
+    if(props.passArray !== null) {
+        console.log("not null");
+    }
+    // const listItems2 = props.arr.map((y) => {
+    //     const rando2 = randomId();
+    //     return <Task key={rando2} title={y.title} task={y.task} id={rando2}/>
+    // });
 
     return (
         <div>

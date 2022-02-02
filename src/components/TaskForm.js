@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import TaskList from "./TaskList";
 
-function TaskForm(props) {
+function TaskForm() {
 
     const [title, setTitle] = useState('');
     const [task, setTask] = useState('');
@@ -27,6 +28,9 @@ function TaskForm(props) {
             console.log('push')
             jason.push({...newTask, "id": jason.length+1}); //https://stackoverflow.com/a/52807852
 
+            let arr = []
+            arr = jason;
+            console.log("jason array -> " , arr);
             // fetch('../data/tempDB.json', {
             //     headers: {
             //         'Content-type': 'application/json',
@@ -40,6 +44,8 @@ function TaskForm(props) {
             //     .catch(err => {
             //         console.log("error mfs ", err)
             //     })
+
+            <TaskList passArray={arr}></TaskList>
         }
     }
 

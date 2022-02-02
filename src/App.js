@@ -8,9 +8,9 @@ function App() {
       <h1>All Tasks</h1>
       <TaskForm />
       <TaskList />
-      <Task title="first one" />
+      {/* <Task title="first one" />
       <Task title="task 2" />
-      <Task title="third" />
+      <Task title="third" /> */}
     </div>
   );
 }
