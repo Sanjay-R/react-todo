@@ -1,3 +1,5 @@
-place 1
-place 2
-raw 3
+1 kachow
+2 idiot
+3 taskeroonie
+4 okay
+5 idk man

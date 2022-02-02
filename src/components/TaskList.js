@@ -1,19 +1,37 @@
+import { useEffect, useState } from 'react';
 import raw from '../data/placeholder.txt';
 
-function TaskList(props) {
+function TaskList() {
 
-    function fetcher() {
-        fetch(raw)
-            .then(r => r.text())
-            .then(text => {
-                console.log('decoded : ' + text);
-            });
-    }
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let something = raw;
+            // let anotherFile = '';
+            await fetch(something)
+                .then((response) => response.text())
+                .then((result) => {
+                    setData(result.replaceAll("\r\n", " ").split(" "));
+                });
+        };
+        fetchData()
+    }, []);
+
+    data.forEach((d) => {
+        console.log(d);
+    });
+
+    const listItems = data.map((x) =>
+        <li>
+            {x}
+        </li>
+    );
 
     return (
         <div>
             <p>list :</p>
-            <p>{fetcher}</p>
+            <ul>{listItems}</ul>
         </div>
     )
 }
