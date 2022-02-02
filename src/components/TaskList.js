@@ -20,7 +20,8 @@ function TaskList() {
                 });
         };
         fetchData()
-    }, []);
+    }, []); //that array u pass is all the states u wanna listen to
+    //useEffect will be called each time one of those states changes
 
     // data.forEach((d) => {
     //     console.log(d.split(", "));
