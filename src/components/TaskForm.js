@@ -17,6 +17,9 @@ function TaskForm(props) {
         // https://youtu.be/pJiRj02PkJQ
         event.preventDefault(); //prevents the page from doing a defualt refresh
         const newTask = { title, task };
+
+        fetch('./data/tempDB.json');
+
         console.log(newTask);
     }
 

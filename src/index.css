@@ -26,7 +26,7 @@ h2 {
 .task-card {
   background-color: whitesmoke; /*do whitesmoke color when task is completed*/
   border-radius: 1em;
-  padding: 3%;
+  padding: 2%;
   text-align: center;
   min-width: min-content;
   max-width: 100%;
@@ -45,7 +45,7 @@ h2 {
   border-radius: 0.5em;
   padding: 1%;
   border: 1px solid black;
-  margin: 0 1em;
+  margin: 0.5em 1em;
 }
 
 .btn:hover {

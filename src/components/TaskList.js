@@ -6,7 +6,7 @@ function TaskList() {
 
     const [data, setData] = useState([]);
 
-    //get all the dummy data from the form
+    //get all the dummy data from the placeholder text file
     useEffect(() => {
         const fetchData = async () => {
             let something = raw;
@@ -22,13 +22,14 @@ function TaskList() {
         fetchData()
     }, []);
 
-    data.forEach((d) => {
-        console.log(d.split(", "));
-    });
+    // data.forEach((d) => {
+    //     console.log(d.split(", "));
+    // });
 
     const listItems = data.map((x) => {
+        const rando = Math.floor((Math.random() * 1000000) + 1); //random number between 1 and a millie
         const item = x.split(", ");
-        return <Task title={item[0]} task={item[1]} id={item[2]}/>
+        return <Task key={rando} title={item[0]} task={item[1]} id={item[2]}/>
     });
 
     return (
