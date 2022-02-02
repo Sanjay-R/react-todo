@@ -19,6 +19,7 @@ function Task(props) {
     return (
         < div className="task-card">
             <h2 className="task-title">{props.title}</h2>
+            <p>{props.task}</p>
             <div className="actions">
                 {/* NEED to use 'onClick' for <button> cz its not custom component, but a built-in one */}
                 <button className="red-btn btn" onClick={openOverlayState}>Delete</button>
