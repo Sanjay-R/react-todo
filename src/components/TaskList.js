@@ -5,6 +5,7 @@ function TaskList() {
 
     const [data, setData] = useState([]);
 
+    //get all the dummy data from the form
     useEffect(() => {
         const fetchData = async () => {
             let something = raw;
@@ -12,14 +13,16 @@ function TaskList() {
             await fetch(something)
                 .then((response) => response.text())
                 .then((result) => {
-                    setData(result.replaceAll("\r\n", " ").split(" "));
+                    //https://thegermancoder.com/2018/11/29/how-to-parse-csv-with-javascript/
+                    let lines = result.split(/(?:\r\n|\n)+/).filter(function(el) {return el.length !== 0});
+                    setData(lines);
                 });
         };
         fetchData()
     }, []);
 
     data.forEach((d) => {
-        console.log(d);
+        console.log(d.split(", "));
     });
 
     const listItems = data.map((x) =>
