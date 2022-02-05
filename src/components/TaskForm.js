@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import TaskList from "./TaskList";
 
 function TaskForm() {
 
@@ -23,14 +22,11 @@ function TaskForm() {
             const newTask = { title, task };
 
             //https://stackoverflow.com/a/18060563
-            var jason = require('../data/tempDB.json').all_tasks;
-            console.log(jason);
+            let jason = require('../data/tempDB.json').all_tasks;
             console.log('push')
             jason.push({...newTask, "id": jason.length+1}); //https://stackoverflow.com/a/52807852
 
-            let arr = []
-            arr = jason;
-            console.log("jason array -> " , arr);
+            
             // fetch('../data/tempDB.json', {
             //     headers: {
             //         'Content-type': 'application/json',
@@ -45,7 +41,6 @@ function TaskForm() {
             //         console.log("error mfs ", err)
             //     })
 
-            <TaskList passArray={arr}></TaskList>
         }
     }
 

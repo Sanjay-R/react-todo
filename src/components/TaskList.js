@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import raw from '../data/placeholder.txt';
 import Task from './Task';
 
-function TaskList(props) {
+function TaskList() {
 
     function randomId(low = 1, high = 1000000) {
         return Math.floor((Math.random() * high) + low);
     }
 
     const [data, setData] = useState([]);
+    const [jsonData, setJsonData] = useState(null);
 
     //get all the dummy data from the placeholder text file
     useEffect(() => {
@@ -19,7 +20,7 @@ function TaskList(props) {
                 .then((response) => response.text())
                 .then((result) => {
                     //https://thegermancoder.com/2018/11/29/how-to-parse-csv-with-javascript/
-                    let lines = result.split(/(?:\r\n|\n)+/).filter(function (el) { return el.length !== 0 });
+                    const lines = result.split(/(?:\r\n|\n)+/).filter(function (el) { return el.length !== 0 });
                     setData(lines);
                 });
         };
@@ -27,23 +28,34 @@ function TaskList(props) {
     }, []); //that array u pass is all the states u wanna listen to
     //useEffect will be called each time one of those states changes
 
+    useEffect(() => {
+        const fetchData2 = async () => {
+            const filepath = require('../data/tempDB.json');
+            setJsonData(filepath)
+            console.log('useEffect ', jsonData)
+        };
+        fetchData2();
+    }, [jsonData]);
+
     const listItems = data.map((x) => {
         const rando = randomId(); //random number between 1 and a millie
         const item = x.split(", ");
         return <Task key={rando} title={item[0]} task={item[1]} id={item[2]} />
     });
 
-    if(props.passArray !== null) {
-        console.log("not null");
+    const listItems2 = []
+    if(jsonData !== null) {
+        //https://simplernerd.com/js-iterate-json/
+        for(let [, value] of Object.entries(jsonData.all_tasks)) {
+            const rando2 = randomId();
+            listItems2.push(<Task key={rando2} title={value.title} task={value.task} id={rando2}/>)
+        }
     }
-    // const listItems2 = props.arr.map((y) => {
-    //     const rando2 = randomId();
-    //     return <Task key={rando2} title={y.title} task={y.task} id={rando2}/>
-    // });
 
     return (
-        <div>
+        <div>            
             {listItems}
+            {listItems2}
         </div>
     )
 }
