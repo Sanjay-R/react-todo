@@ -35,7 +35,7 @@ function TaskForm() {
             .then(() => {
                 console.log("New Task added!")
                 setNewAlert()
-                return window.location.reload(); //to refresh page and get new tasks
+                return //window.location.reload(); //to refresh page and get new tasks
             })
             .catch(err => console.log(err))
 
@@ -86,7 +86,8 @@ function TaskForm() {
                 <button className="btn" onClick={submitTask}>Add</button>
             </form>
             <div>
-                <TaskList />
+                {alert ? < TaskList /> : null}
+                {!alert ? < TaskList /> : null}
             </div>
         </div>
     );
