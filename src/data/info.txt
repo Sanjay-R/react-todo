@@ -1,0 +1,2 @@
+Open this on another terminal:
+npx json-server --watch src/data/tempDB.json --port 8000

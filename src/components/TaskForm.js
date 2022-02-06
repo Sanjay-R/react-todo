@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import TaskList from "./TaskList";
 
 function TaskForm() {
 
     const [title, setTitle] = useState('');
     const [task, setTask] = useState('');
+    const [alert, setAlert] = useState(false)
 
     function setNewTitle(event) {
         setTitle(event.target.value);
@@ -13,36 +15,57 @@ function TaskForm() {
         setTask(event.target.value);
     }
 
-    function submitTask(event) {
+    function setNewAlert() {
+        setAlert(!alert)
+    }
+
+    //https://youtu.be/V_Kr9OSfDeU?t=224
+    async function postTask() {
+
+        const newTask = { title, task };
+
+        //https://youtu.be/EcRFYF4B3IQ
+        await fetch('http://localhost:8000/all_tasks', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(newTask)
+        })
+            .then(() => {
+                console.log("New Task added!")
+                setNewAlert()
+                return;
+            })
+            .catch(err => console.log(err))
+
+    }
+
+    function submitTask() {
+
+        console.log("alert -> ", alert);
+
         // https://youtu.be/pJiRj02PkJQ
-        event.preventDefault(); //prevents the page from doing a defualt refresh
+        // event.preventDefault(); //prevents the page from doing a defualt refresh
 
         if (title.trim() !== "" && task.trim() !== "") {
 
-            const newTask = { title, task };
+            postTask()
 
             //https://stackoverflow.com/a/18060563
-            let jason = require('../data/tempDB.json').all_tasks;
-            console.log('push')
-            jason.push({...newTask, "id": jason.length+1}); //https://stackoverflow.com/a/52807852
+            // let jason = require('../data/tempDB.json').all_tasks;
+            // console.log('push')
+            // jason.push({...newTask, "id": jason.length+1}); //https://stackoverflow.com/a/52807852
 
-            
-            // fetch('../data/tempDB.json', {
-            //     headers: {
-            //         'Content-type': 'application/json',
-            //         'Accept': 'application/json'
-            //     }
-            // })
-            //     .then(response => {
-            //         return response.json();
-            //     })
-            //     .then(data => console.log(data))
-            //     .catch(err => {
-            //         console.log("error mfs ", err)
-            //     })
+            setTask('')
+            setTitle('')
 
         }
     }
+
+    useEffect(() => {
+        console.log('Alert set! ', alert)
+    }, [alert]) //https://stackoverflow.com/a/58837188
 
     return (
         <div>
@@ -62,8 +85,11 @@ function TaskForm() {
                     value={task}
                     onChange={setNewTask}
                     required />
-                <button className="btn" onClick={submitTask}>Add</button>
+                <button className="btn" id="submit" onClick={submitTask}>Add</button>
             </form>
+            <div>
+                <TaskList />
+            </div>
         </div>
     );
 }
