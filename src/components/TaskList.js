@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import raw from '../data/placeholder.txt';
 import Task from './Task';
 
-function TaskList(props) {
+function TaskList() {
 
-    function randomId(low = 1, high = 1000000) {
+    function randomId(low = 1, high = 10000000) {
         return Math.floor((Math.random() * high) + low);
     }
 

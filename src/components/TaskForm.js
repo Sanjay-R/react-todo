@@ -35,18 +35,16 @@ function TaskForm() {
             .then(() => {
                 console.log("New Task added!")
                 setNewAlert()
-                return;
+                return window.location.reload(); //to refresh page and get new tasks
             })
             .catch(err => console.log(err))
 
     }
 
-    function submitTask() {
-
-        console.log("alert -> ", alert);
+    function submitTask(event) {
 
         // https://youtu.be/pJiRj02PkJQ
-        // event.preventDefault(); //prevents the page from doing a defualt refresh
+        event.preventDefault(); //prevents the page from doing a defualt refresh
 
         if (title.trim() !== "" && task.trim() !== "") {
 
@@ -85,7 +83,7 @@ function TaskForm() {
                     value={task}
                     onChange={setNewTask}
                     required />
-                <button className="btn" id="submit" onClick={submitTask}>Add</button>
+                <button className="btn" onClick={submitTask}>Add</button>
             </form>
             <div>
                 <TaskList />
