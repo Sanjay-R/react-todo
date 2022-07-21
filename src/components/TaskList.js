@@ -3,7 +3,7 @@ import raw from '../data/placeholder.txt';
 import Task from './Task';
 import { v4 as uuidv4 } from 'uuid';
 
-function TaskList() {
+function TaskList(props) {
 
     function randomId(low = 1, high = 10000000) {
         return uuidv4()
@@ -12,6 +12,7 @@ function TaskList() {
 
     const [data, setData] = useState([]);
     const [jsonData, setJsonData] = useState([]);
+    const [checker, setChecker] = useState(true); //check if new task has been posted/deleted
 
     //get all the dummy data from the placeholder text file
     useEffect(() => {
@@ -46,7 +47,7 @@ function TaskList() {
             return;
         })
         .catch((err) => console.log(err));
-    }, [])
+    }, [props.update]);
 
 
     // useEffect(() => {

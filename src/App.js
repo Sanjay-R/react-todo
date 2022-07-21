@@ -1,12 +1,20 @@
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
+import { useState } from 'react';
 
 function App() {
+
+  const [update, setUpdate] = useState(true)
+
+  const toggleUpdate = () => {
+    setUpdate(v => !v)
+  }
+
   return (
     <div>
       <h1>All Tasks</h1>
-      <TaskForm />
-      <TaskList />
+      <TaskForm onUpdate={toggleUpdate}/>
+      <TaskList update={update}/>
     </div>
   );
 }

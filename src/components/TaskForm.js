@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function TaskForm() {
+function TaskForm(props) {
 
     const [title, setTitle] = useState('');
     const [task, setTask] = useState('');
@@ -28,7 +28,8 @@ function TaskForm() {
         })
             .then(() => {
                 console.log("New Task added!")
-                return window.location.reload(); //to refresh page and get new tasks
+                props.onUpdate();
+                // return window.location.reload(); //to refresh page and get new tasks
             })
             .catch(err => console.log(err))
 
