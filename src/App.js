@@ -14,7 +14,9 @@ function App() {
     <div>
       <h1>All Tasks</h1>
       <TaskForm onUpdate={toggleUpdate}/>
-      <TaskList update={update}/>
+      <TaskList update={update} setUpdate={toggleUpdate}/>
+      {/* https://www.reddit.com/r/reactjs/comments/u5ol8w/comment/i5360o5/?utm_source=share&utm_medium=web2x&context=3 
+      https://beta.reactjs.org/learn/sharing-state-between-components#lifting-state-up-by-example */}
     </div>
   );
 }

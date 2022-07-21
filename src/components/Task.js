@@ -7,12 +7,12 @@ function Task(props) {
     const [overlayOpen, setOverlayOpen] = useState(false); //https://reactjs.org/docs/hooks-state.html
 
     function openOverlayState() {
-        console.log("clicked " + props.title);
+        console.log("Clicked " + props.title);
         setOverlayOpen(true);
     }
 
     function closeOverlayState() {
-        console.log("closed overlay");
+        console.log("Closed overlay");
         setOverlayOpen(false);
     }
     
@@ -28,7 +28,8 @@ function Task(props) {
                 }
                 closeOverlayState()
                 console.log("Task Deleted!")
-                return window.location.reload(); //to refresh page and get new tasks
+                props.updater()
+                // return window.location.reload(); //to refresh page and get new tasks
             })
             .catch(err => console.log(err))
 

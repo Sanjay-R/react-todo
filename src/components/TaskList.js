@@ -5,14 +5,13 @@ import { v4 as uuidv4 } from 'uuid';
 
 function TaskList(props) {
 
-    function randomId(low = 1, high = 10000000) {
+    function randomKey(low = 1, high = 10000000) {
         return uuidv4()
         // return Math.floor((Math.random() * high) + low);
     }
 
     const [data, setData] = useState([]);
     const [jsonData, setJsonData] = useState([]);
-    const [checker, setChecker] = useState(true); //check if new task has been posted/deleted
 
     //get all the dummy data from the placeholder text file
     useEffect(() => {
@@ -43,11 +42,11 @@ function TaskList(props) {
         })
         .then((data) => {
             setJsonData(data)
-            // console.log(data)
+            console.log('Props = ', props)
             return;
         })
         .catch((err) => console.log(err));
-    }, [props.update]);
+    }, [props, props.update]);
 
 
     // useEffect(() => {
@@ -60,19 +59,19 @@ function TaskList(props) {
     // });
 
     const listItems = data.map((x) => {
-        const rando = randomId(); //random number between 1 and a millie
+        const rando = randomKey(); //random number between 1 and a millie
         const item = x.split(", ");
         return <Task key={rando} title={item[0]} task={item[1]} id={item[2]} />
     });
 
     const listItems2 = jsonData.map((i) => {
-        const randomNum = randomId();
-        return <Task key={randomNum} title={i.title} task={i.task} id={i.id} />
+        const randomNum = randomKey();
+        return <Task key={randomNum} title={i.title} task={i.task} id={i.id} updater={props.setUpdate}/>
     })
     // if(jsonData !== null) {
     //     //https://simplernerd.com/js-iterate-json/
     //     for(let [, value] of Object.entries(jsonData)) {
-    //         const rando2 = randomId();
+    //         const rando2 = randomKey();
     //         listItems2.push(<Task key={rando2} title={value.title} task={value.task} id={rando2}/>)
     //     }
     // }
