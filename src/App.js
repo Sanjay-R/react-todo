@@ -12,3 +12,5 @@ function App() {
 }
 
 export default App;
+
+// Start server + app with "npm run startall" : https://stackoverflow.com/a/47973739

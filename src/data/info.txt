@@ -1,2 +1,4 @@
 Open this on another terminal:
 npx json-server --watch src/data/tempDB.json --port 8000
+
+Used this to put the commands together: https://stackoverflow.com/a/47973739
