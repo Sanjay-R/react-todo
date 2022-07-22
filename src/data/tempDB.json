@@ -1,3 +1,14 @@
 {
-  "all_tasks": []
+  "all_tasks": [
+    {
+      "title": "Home",
+      "task": "Do groceries for dinner",
+      "id": 1
+    },
+    {
+      "title": "pinja colada",
+      "task": "yoga",
+      "id": 2
+    }
+  ]
 }

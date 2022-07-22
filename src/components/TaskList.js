@@ -46,7 +46,7 @@ function TaskList(props) {
             return;
         })
         .catch((err) => console.log(err));
-    }, [props, props.update]);
+    }, [props.update]);
 
 
     // useEffect(() => {
